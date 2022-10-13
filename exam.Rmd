@@ -51,8 +51,19 @@ ggsave(filename = "plot.png")
 
 ```
 
-
+#determine the percentage of males and females by class
 ```{r}
-
+#Class1
+class_1 %>% 
+    group_by( Sex ) %>% 
+    summarise( percent = 100 * n() / nrow( class_1 ) )
+#Class2
+class_2 %>% 
+    group_by( Sex ) %>% 
+    summarise( percent = 100 * n() / nrow( class_2 ) )
+#Class3
+class_3 %>% 
+    group_by( Sex ) %>% 
+    summarise( percent = 100 * n() / nrow( class_3 ) )
 ```
 
