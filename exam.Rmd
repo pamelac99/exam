@@ -1,0 +1,58 @@
+---
+title: "Exam"
+author: "Pamela Chan"
+date: "October 12th, 2022"
+output: R markdown
+---
+
+## Load libraries
+
+```{r}
+rm(list = ls())
+pacman::p_load(tidyverse, foreign, haven, ggplot2)
+```
+
+## Read in csv file
+
+```{r}
+titanic <-
+  read_csv("https://raw.githubusercontent.com/kijohnson/Data/main/titanic.csv")
+```
+
+## determining the median age for by passenger class
+
+```{r}
+#check how many categories of Pclass
+table(titanic$Pclass)
+#filter out the class 1
+class_1 = titanic[titanic$Pclass == 1,]
+#median age of class 1
+median1 <- median(class_1$Age, na.rm = FALSE)
+#filter out the class 2
+class_2 = titanic[titanic$Pclass == 2,]
+#median age of class 2
+median(class_2$Age, na.rm = FALSE)
+#filter out the class 3
+class_3 = titanic[titanic$Pclass == 3,]
+#median age of class 3
+median(class_3$Age, na.rm = FALSE)
+```
+
+## a plot that shows medians, spread of data, and outliers for the continuous variable age according to passenger class
+
+```{r}
+plot <- boxplot(Age ~ Pclass, data = titanic)
+
+```
+
+#save the plot
+```{r}
+ggsave(filename = "plot.png")
+
+```
+
+
+```{r}
+
+```
+
